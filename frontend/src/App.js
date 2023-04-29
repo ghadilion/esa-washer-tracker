@@ -6,6 +6,9 @@ function App() {
 
    return (
       <div className="App">
+         <header>
+            Washer Tracer
+         </header>
          <main>
             {
                arr.map((id) => <Washingmachine id={id}></Washingmachine>)

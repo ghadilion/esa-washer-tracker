@@ -4,10 +4,29 @@
    box-sizing: border-box;
 }
 
+.App {
+   display: flex;
+   flex-direction: column;
+   width: 100vw;
+   height: 100vh;
+   background: black;
+}
+
+header {
+   font-family: 'Raleway', sans-serif;
+   font-size: 36px;
+   text-align: center;
+   padding-top: 10px;
+   color: lightblue;
+}
+
 main {
+   flex-grow: 1;
    display: flex;
    flex-wrap: wrap;
    justify-content: start;
    align-items: center;
-   border: 3px solid blue;
+   width: 100vw;
+   row-gap: 8px;
+   margin: auto;
 }
