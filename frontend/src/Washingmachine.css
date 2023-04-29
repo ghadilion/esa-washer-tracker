@@ -1,0 +1,10 @@
+#wmouterbox{
+   flex-basis: 25%; /* ensures there are only 4 washing machines in 1 row */
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   width: 200px;
+   height: 250px;
+   border: 3px solid black;
+}
