@@ -6,9 +6,13 @@ var bodyParser = require('body-parser')
 
 app.use(bodyParser.json())
 
+app.get("/", (req, res) => {
+   res.send("hello world");
+})
+
 app.post('/', (req, res) => {
-    console.log(req.body);
-    res.send(req.body);
+   console.log(req.body);
+   res.send(req.body);
 })
 
 app.listen(port, () => {
