@@ -1,34 +1,33 @@
-import { useEffect } from "react";
-import "./App.css";
+import { useState, useEffect } from "react";
 import Washingmachine from "./Washingmachine";
+import "./App.css";
 
 function App() {
-   const arr = [1, 2, 3, 4, 5, 6, 7, 8];
-   
+   const [washTimes, setWashTimes] = useState([0, 0, 0, 0, 0, 0, 0, 0]);
+
    useEffect(() => {
-      const sse = new EventSource('http://localhost:5005/');
-      function getRealtimeData(data) {
-        console.log(data)
-      }
-      sse.onmessage = e => getRealtimeData(JSON.parse(e.data));
-      sse.onerror = () => {
-        // error log here 
-        sse.close();
-      }
-      return () => {
-        sse.close();
-      };
-    }, []);
+      const serverURL = "http://localhost:8080";
+
+      const fetchUpdatedTimes = setInterval(async () => {
+         const res = await fetch(serverURL);
+         const { data } = await res.json();
+         setWashTimes(data);
+         console.log(data);
+      }, 5000);
+
+      return () => clearInterval(fetchUpdatedTimes);
+   }, []);
 
    return (
       <div className="App">
-         <header>
-            Washer Tracer
-         </header>
+         <header>Washer Tracer</header>
          <main>
-            {
-               arr.map((id) => <Washingmachine id={id}></Washingmachine>)
-            }
+            {washTimes.map((washTimes, index) => (
+               <Washingmachine
+                  pendingTime={washTimes}
+                  id={index + 1}
+               ></Washingmachine>
+            ))}
          </main>
       </div>
    );
