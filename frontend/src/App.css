@@ -4,6 +4,11 @@
    box-sizing: border-box;
 }
 
+#wave {
+   position: absolute;
+   z-index: 2;
+}
+
 .App {
    display: flex;
    flex-direction: column;
@@ -13,20 +18,20 @@
 }
 
 header {
+   position: relative;
+   z-index: 2;
    font-family: 'Raleway', sans-serif;
    font-size: 36px;
    text-align: center;
-   padding-top: 10px;
-   color: lightblue;
+   padding-top: 16px;
+   color: white;
 }
 
 main {
    flex-grow: 1;
    display: flex;
    flex-wrap: wrap;
-   justify-content: start;
-   align-items: center;
+   align-content: space-between;
    width: 100vw;
-   row-gap: 8px;
-   margin: auto;
+   margin: 0px auto;
 }

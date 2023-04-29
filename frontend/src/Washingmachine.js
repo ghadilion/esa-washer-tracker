@@ -48,7 +48,7 @@ function Washingmachine({ id, pendingTime }) {
             </div>
          </div>
 
-         <img src={imageURL} alt="washing-machine"></img>
+         <img id="wmimg" src={imageURL} alt="washing-machine"></img>
       </div>
    );
 }

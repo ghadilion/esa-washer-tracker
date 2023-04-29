@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Washingmachine from "./Washingmachine";
+import SVG from "./wave.svg";
 import "./App.css";
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
 
    return (
       <div className="App">
+         <img  id="wave" src={SVG}></img>
          <header>Washer Tracer</header>
          <main>
             {washTimes.map((washTimes, index) => (
