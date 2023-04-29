@@ -14,7 +14,7 @@ function App() {
          const { data } = await res.json();
          setWashTimes(data);
          console.log(data);
-      }, 5000);
+      }, 1000);
 
       return () => clearInterval(fetchUpdatedTimes);
    }, []);

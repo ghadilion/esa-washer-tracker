@@ -1,8 +1,28 @@
 const express = require("express");
 const cors = require("cors");
-
+const mqtt = require('mqtt')
 const app = express();
 const port = 8080;
+const host = 'test.mosquitto.org'
+const mqttport = '1883'
+const connectUrl = `mqtt://${host}:${mqttport}`
+
+const client = mqtt.connect(connectUrl)
+console.log(client.connected);
+const topic = 'timer_readings_363357655550522369'
+
+client.on('connect', () => {
+  console.log('Connected')
+  client.subscribe([topic], () => {
+    console.log(`Subscribed to topic '${topic}'`)
+  })
+})
+
+client.on('message', (topic, payload) => {
+  console.log('Received Message:', topic, payload.toString())
+  updateWashTimes(JSON.parse(payload));
+})
+
 
 app.use(
    cors({
@@ -43,12 +63,6 @@ function updateWashTimes({ machine_timers }){
 app.get("/", (req, res) => {
    res.status(200).json({ data: washTimes });
 })
-
-app.post("/", (req, res) => {
-   console.log(res.body);
-   updateWashTimes(req.body);
-   res.send("ok"); // closing response without sending unnecessary data
-});
 
 app.listen(port, () => {
    console.log(`Server listening on port ${port}`);

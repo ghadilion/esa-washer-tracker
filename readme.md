@@ -1,14 +1,15 @@
 # Instructions
 
-# Server
-Start the server:
-npm start @ /esa-washer-tracker
+1. Open a terminal in the project directory and run the following commands
 
-# Client
-Start the frontend:
-1. Navigate to frontend -> "cd frontend"
-2. npm start @ /esa-washer-tracker/frontend
+```console
+$ cd frontend
+$ npm i
+$ cd ..
+$ npm i
+$ npm start
+```
 
-# Embedded system
-1. ssh locally hosted server on to the internet using localhost.run -> "ssh -R 80:localhost:8080 nokey@localhost.run"
-2. Simulate the embedded system
+2. Open [this Wokwi project](https://wokwi.com/projects/363357655550522369) and start the simulation.
+
+3. The frontend at localhost:3000 will be updated in real time according to the timers in the simulation.
