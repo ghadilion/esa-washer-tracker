@@ -22,7 +22,7 @@ function App() {
    return (
       <div className="App">
          <img  id="wave" src={SVG}></img>
-         <header>Washer Tracer</header>
+         <header>Washer Tracker</header>
          <main>
             {washTimes.map((washTimes, index) => (
                <Washingmachine
